@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Class for player information such as:
  * Player position, inventory, and health.
@@ -5,25 +7,20 @@
 
 public class Player {
     public int health;
-    public ArrayList<> inventory;
+    public ArrayList<String> inventory;
 
-    public int row;
-    public int column;
+    public int position;
 
     public Player() {
         health = 100; // This can change, just picking a random number for now
-        row = 4;
-        column = 2;
+        position = 14; // Locations are numbered 1-16 starting from top left
     }
 
     public int getHealth() {
         return health;
     }
-    public int getRow() {
-        return row;
-    }
-    public int getColumn() {
-        return column;
+    public int getPosition() {
+        return position;
     }
 
     public void takeDamage(int damage) {
@@ -34,16 +31,16 @@ public class Player {
      * For changing player position when moving
      */
     public void moveNorth() {
-        row--;
+        row -= 4;
     }
     public void moveSouth() {
-        row++;
+        row += 4;
     }
     public void moveEast() {
-        column++;
+        column += 1;
     }
     public void moveWest() {
-        column--;
+        column -= 1;
     }
 
 }
