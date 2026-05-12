@@ -43,4 +43,45 @@ public class Player {
         column -= 1;
     }
 
+
+    //Player can check on inventory
+    public void showInventory() {
+        if (inventory == null) {
+            System.out.println("Inventory is empty");
+            return;
+        }
+        System.out.println("Inventory:");
+        for (int i = 0; i < inventory.size(); i++) {
+            System.out.println(i + ": " + inventory.get(i));
+        }
+
+    }
+    //Unsure if this will work -Lachlan
+    public void addItems(Items item) {
+        inventory.add(item);
+    }
+
+
+    //Check index number user entered
+    public void useItem(int index) {
+        if (index < 0 || index >= inventory.size()) {
+            System.out.println("Invalid item index");
+            return;
+        }
+
+    Items item = inventory.get(index);
+
+    //Checks if item has a Healing amount
+    //And if health was to exceed 100, would be set to 100
+    if (item.getHealingAmount() >0) {
+            health += item.getHealingAmount();
+            if (health > 100) {
+                health = 100;
+            }
+            System.out.println("You have used" + item.getItemName() + "and healed");
+            inventory.remove(index);
+        }
+
+    }
 }
+
