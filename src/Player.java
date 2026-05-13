@@ -8,13 +8,16 @@ import java.util.ArrayList;
 public class Player {
     public int health;
     public ArrayList<String> inventory;
+    private String playerName;
 
     public int position;
 
-    public Player() {
+    public Player(String playerName) {
         health = 100; // This can change, just picking a random number for now
         position = 14; // Locations are numbered 1-16 starting from top left
+        this.playerName = playerName; //Added this to accept player input as name through main
     }
+
 
     public int getHealth() {
         return health;
