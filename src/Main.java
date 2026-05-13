@@ -13,6 +13,6 @@ public static void main(){
     Items brokenSword = new Items("BrokenSword", 5, "Flimsy Broken Sword", 0);
 
     //Needed to create a player before I could add an item
-    player.addItem(brokenSword);
+    player.getInventory().addItem(brokenSword);
 
 }
