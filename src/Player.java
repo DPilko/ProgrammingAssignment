@@ -56,13 +56,13 @@ public class Player {
         }
 
     }
-    //Unsure if this will work -Lachlan
-    public void addItems(Items item) {
-        inventory.add(item);
+    //Adding the item name of an inventory when player.addItems is called
+    public void addItem(Items item) {
+        inventory.add(item.getItemName());
     }
 
 
-    //Check index number user entered
+    //Check index number user entered a nd makes sure it is an index that exists.
     public void useItem(int index) {
         if (index < 0 || index >= inventory.size()) {
             System.out.println("Invalid item index");
