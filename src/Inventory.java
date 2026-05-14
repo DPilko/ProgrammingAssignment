@@ -52,10 +52,10 @@ public class Inventory {
             System.out.println("You have used" + item.getItemName() + "and healed");
             //If item is used, it will then be removed from Inventory
             items.remove(index);
-            else{
-                System.out.println("Thsi item cannot heal you");
-                break;
-            }
+        }
+        else{
+            System.out.println("Thsi item cannot heal you");
+            break;
         }
 
     }
