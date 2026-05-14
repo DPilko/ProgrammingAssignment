@@ -42,7 +42,7 @@ public class Inventory {
         }
 
         //Uses that index number to set the corresponding item.
-        Items item = inventory.get(index);
+        Items item = items.get(index);
 
         //Checks if item has a Healing amount value
         //And if health was to exceed 100, would be set to 100
@@ -55,7 +55,6 @@ public class Inventory {
         }
         else{
             System.out.println("Thsi item cannot heal you");
-            break;
         }
 
     }
