@@ -9,6 +9,10 @@ public class Combat {
         Random random = new Random();
 
         while (player.getHealth() > 0 && !enemy.isDefeated()) {
+            System.out.println("You have entered combat!");
+            System.out.println("What do you want to do?");
+            System.out.println("Do you want to (F)ight or (R)un");
+            String combatDecision = scanner.nextLine();
 
         }
     }

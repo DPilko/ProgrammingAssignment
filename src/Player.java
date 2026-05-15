@@ -44,18 +44,18 @@ public class Player {
     /*
      * For changing player position when moving
      */
-    public void moveNorth() {
-        row -= 4;
-    }
-    public void moveSouth() {
-        row += 4;
-    }
-    public void moveEast() {
-        column += 1;
-    }
-    public void moveWest() {
-        column -= 1;
-    }
+//    public void moveNorth() {
+//        row -= 4;
+//    }
+//    public void moveSouth() {
+//        row += 4;
+//    }
+//    public void moveEast() {
+//        column += 1;
+//    }
+//    public void moveWest() {
+//        column -= 1;
+//    }
 
 }
 

@@ -13,7 +13,6 @@ public class Inventory {
         items = new ArrayList<>();
     }
 
-   //Add items to Inventory
     public void addItem(Items item) {
         items.add(item);
     }
