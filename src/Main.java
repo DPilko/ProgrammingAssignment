@@ -10,14 +10,14 @@ public static void main(){
     Player player = new Player(playerName);
 
     //Creating Items
-    //Items brokenSword = new Items("BrokenSword", 5, "Flimsy Broken Sword", 0);
-    //Items goldenSword = new Items("GoldenSword", 20, "Strong Golden Sword", 0);
-    //Items healingPotion = new Items("HealingPotion", 0, "Healing Potion that will restore 50 health", 20);
-    //Items key = new Items("Key", 1, "Key", 0);
+    Items brokenSword = new Items("BrokenSword", "Flimsy Broken Sword", 5, 0);
+    Items goldenSword = new Items("GoldenSword", "Strong Golden Sword", 20, 0);
+    Items healingPotion = new Items("HealingPotion", "Healing Potion that will restore 20 health", 0, 20);
+    Items key = new Items("Key", "Key", 0, 0);
 
 
-    //Puts broken sword into inventory
-    //player.getInventory().addItem(brokenSword);
+//    Puts broken sword into inventory
+//    player.getInventory().addItem(brokenSword);
 
     //Creating Bosses
     Enemy miniBoss1 = new Enemy("Miniboss1", 30 ,20 );

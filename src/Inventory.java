@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-//Test update
-
 //Created an Inventory class to clear clutter from Player class
 public class Inventory {
 
@@ -43,7 +41,7 @@ public class Inventory {
         //Uses that index number to set the corresponding item.
         Items item = items.get(index);
 
-        //Checks if item has a Healing amount value
+        //Checks if item has a Healing amount value and adds it to player health
         //And if health was to exceed 100, would be set to 100
         if (item.getHealingAmount() >0) {
             player.heal(item.getHealingAmount());
@@ -52,6 +50,11 @@ public class Inventory {
             //If item is used, it will then be removed from Inventory
             items.remove(index);
         }
+        else if item.getItemDamage() > 0{
+            player.attackDamage(item.getItemDamage());
+            System.out.println("You have equipped" + item.getItemName() + item.getItemDescription());
+        }
+
         else{
             System.out.println("Thsi item cannot heal you");
         }

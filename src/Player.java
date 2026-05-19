@@ -8,7 +8,7 @@ public class Player {
     public int health;
     private String playerName;
     private Inventory inventory;
-
+    private int attack;
     public int position;
 
     public Player(String playerName) {
@@ -16,6 +16,7 @@ public class Player {
         position = 14; // Locations are numbered 1-16 starting from top left
         this.playerName = playerName; //Added this to accept player input as name through main
         inventory = new Inventory();
+        attack = 1;
     }
 
     //Can call to access Inventory from main and add items
@@ -25,12 +26,25 @@ public class Player {
     public int getHealth() {
         return health;
     }
+
     public int getPosition() {
         return position;
     }
 
+    public int attackDamage(){
+        return attack;
+    }
+
+    public int attackDamage(int itemDamage){
+         attack = itemDamage;
+         return attack;
+    }
+
     public void takeDamage(int damage) {
         health -= damage;
+        if (health <= 0) {
+            health = 0;
+        }
     }
 
    //Moved into Player class, instead of inventory.
