@@ -2,16 +2,16 @@ public class Items {
 
     //Creating instance variables for Items
     private String itemName;
-    private int itemDamage;
     private String itemDescription;
+    private int itemDamage;
     private int healingAmount;
 
 
     //Using a Constructor so these parameters must be passed though and set to the instance variables above.
-    public Items(String itemName, int itemDamage, String itemDescription, int healingAmount) {
+    public Items(String itemName, String itemDescription, int itemDamage, int healingAmount) {
         this.itemName = itemName;
-        this.itemDamage = itemDamage;
         this.itemDescription = itemDescription;
+        this.itemDamage = itemDamage;
         this.healingAmount = healingAmount;
 
     }
@@ -20,11 +20,11 @@ public class Items {
     public String getItemName() {
         return itemName;
     }
-    public int getItemDamage() {
-        return itemDamage;
-    }
     public String getItemDescription() {
         return itemDescription;
+    }
+    public int getItemDamage() {
+        return itemDamage;
     }
     public int getHealingAmount() {
         return healingAmount;
