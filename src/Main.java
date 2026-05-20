@@ -24,4 +24,6 @@ public static void main(){
     Enemy miniBoss2 = new Enemy("MiniBoss2", 50 ,35 );
     Enemy finalBOSS = new Enemy("FinalBOSS", 200 ,40 );
 
+    //Example start combat
+    Combat.combat(player, miniBoss1);
 }

@@ -31,13 +31,18 @@ public class Player {
         return position;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    //Gets attack damage
     public int attackDamage(){
         return attack;
     }
 
-    public int attackDamage(int itemDamage){
+    //Sets attack damage to value of item when called.
+    public void setAttackDamage(int itemDamage){
          attack = itemDamage;
-         return attack;
     }
 
     public void takeDamage(int damage) {

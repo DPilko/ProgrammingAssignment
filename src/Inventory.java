@@ -50,8 +50,8 @@ public class Inventory {
             //If item is used, it will then be removed from Inventory
             items.remove(index);
         }
-        else if item.getItemDamage() > 0{
-            player.attackDamage(item.getItemDamage());
+        else if (item.getItemDamage() > 0){
+            player.setAttackDamage(item.getItemDamage());
             System.out.println("You have equipped" + item.getItemName() + item.getItemDescription());
         }
 
