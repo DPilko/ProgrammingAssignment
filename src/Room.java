@@ -42,9 +42,9 @@ public class Room {
         return items;
     }
 
-//    public Enemy hasEnemy() { // get the enemy name if there is an enemy in that room
-//        //return Enemy.getName(); // not sure why its red
-//    }
+   public Enemy hasEnemy() { // get the enemy name if there is an enemy in that room
+        return enemy; // not sure why its red
+   }
     
     public NPC getNPC() {
         return npc;
