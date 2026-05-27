@@ -27,6 +27,10 @@ public class Combat {
 
                 System.out.printf("You have attacked %s and dealt %d damage. %s has %d health remaining\n",enemy.getName(),player.attackDamage(),enemy.getName(),enemy.getHealth());
 
+                player.takeDamage(enemy.getDamage());
+
+                System.out.printf("%s has attacked you and dealt %d to you.",enemy.getName(),enemy.getDamage());
+
 
             }
 

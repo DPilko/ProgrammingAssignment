@@ -36,5 +36,8 @@ public class Enemy {
         return random.nextInt(damage); // Damage calc can change later idk
     }
 
+    public int getDamage() {
+        return damage;
+    }
 
 }
