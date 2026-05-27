@@ -7,7 +7,7 @@
 public class Player {
     public int health;
     private String playerName;
-    private Inventory inventory;
+    public Inventory inventory;
     private int attack;
     public int position;
 

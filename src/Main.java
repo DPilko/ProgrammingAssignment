@@ -17,9 +17,6 @@ public static void main(){
     Items goldenKey = new Items("GoldenKey", "Key to unlock dungeon exit", 0, 0);
 
 
-//    Puts broken sword into inventory
-//    player.getInventory().addItem(brokenSword);
-
     //Creating Bosses
     Enemy miniBoss1 = new Enemy("Miniboss1", 30 ,20 );
     Enemy miniBoss2 = new Enemy("MiniBoss2", 50 ,35 );
@@ -30,6 +27,15 @@ public static void main(){
     throneRoomItems.add(goldenKey);
     Room kingsThrone = new Room("Kings Throne", "Final boss room", "Defeated final boss room", throneRoomItems,
             finalBOSS, null);
+
+
+
+    //How to add items to inventory and then how to call players inventory
+    player.getInventory().addItem(brokenSword);
+    player.getInventory().addItem(goldenSword);
+    player.getInventory().addItem(key);
+    player.getInventory().addItem(healingPotion);
+    player.inventory.showInventory();
 
     //Example start combat
     Combat.combat(player, finalBOSS);

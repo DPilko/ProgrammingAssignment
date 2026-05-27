@@ -52,11 +52,11 @@ public class Inventory {
         }
         else if (item.getItemDamage() > 0){
             player.setAttackDamage(item.getItemDamage());
-            System.out.println("You have equipped" + item.getItemName() + item.getItemDescription());
+            System.out.println("You have equipped a " + item.getItemDescription());
         }
 
         else{
-            System.out.println("Thsi item cannot heal you");
+            System.out.println("This item cannot heal you");
         }
 
     }

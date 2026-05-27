@@ -17,13 +17,23 @@ public class Combat {
             boolean playerRun = false;
 
             if (combatDecision.equals("F")) {
+                System.out.println("What item number would you like to equip?");
+                player.inventory.showInventory();
+                int itemNumber = scanner.nextInt();
+                scanner.nextLine(); //Was creating extra inputs, this fixs
+                player.inventory.useItem(itemNumber, player);
+
+                enemy.takeDamage(player.attackDamage());
+
+                System.out.printf("You have attacked %s and dealt %d damage. %s has %d health remaining\n",enemy.getName(),player.attackDamage(),enemy.getName(),enemy.getHealth());
+
 
             }
 
             else if (combatDecision.equals("R")) {
                 playerRun = random.nextBoolean();
                 if(playerRun){
-                    System.out.println("You have flee combat");
+                    System.out.println("You have fled combat");
                     break;
                 }
                 else{
