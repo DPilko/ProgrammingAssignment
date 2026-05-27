@@ -46,7 +46,7 @@ public class Inventory {
         if (item.getHealingAmount() >0) {
             player.heal(item.getHealingAmount());
 
-            System.out.println("You have used" + item.getItemName() + "and healed");
+            System.out.println("You have used a " + item.getItemName() + " and healed\n");
             //If item is used, it will then be removed from Inventory
             items.remove(index);
         }

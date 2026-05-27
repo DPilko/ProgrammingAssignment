@@ -10,7 +10,7 @@ public class Combat {
 
         System.out.println("You have entered combat with " + enemy.getName() + "!");
         while (player.getHealth() > 0 && !enemy.isDefeated()) {
-            System.out.println("You have " + player.getHealth() + " health remaining!");
+            System.out.println("You have " + player.getHealth() + " health remaining!\n");
             System.out.println("What do you want to do?");
             System.out.println("Do you want to (F)ight or (R)un");
             String combatDecision = scanner.nextLine();
@@ -25,11 +25,11 @@ public class Combat {
 
                 enemy.takeDamage(player.attackDamage());
 
-                System.out.printf("You have attacked %s and dealt %d damage. %s has %d health remaining\n",enemy.getName(),player.attackDamage(),enemy.getName(),enemy.getHealth());
+                System.out.printf("You have attacked %s and dealt %d damage.\n%s has %d health remaining\n\n",enemy.getName(),player.attackDamage(),enemy.getName(),enemy.getHealth());
 
                 player.takeDamage(enemy.getDamage());
 
-                System.out.printf("%s has attacked you and dealt %d to you.",enemy.getName(),enemy.getDamage());
+                System.out.printf("%s has attacked you and dealt %d to you.\n",enemy.getName(),enemy.getDamage());
 
 
             }

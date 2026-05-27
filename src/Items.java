@@ -30,4 +30,10 @@ public class Items {
         return healingAmount;
     }
 
+    //Needed to add an Override statement so that the actual item names would be called instead of the random characters
+    @Override
+    public String toString() {
+        return itemName;
+    }
+
 }

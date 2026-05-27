@@ -10,9 +10,9 @@ public static void main(){
     Player player = new Player(playerName);
 
     //Creating Items
-    Items brokenSword = new Items("BrokenSword", "Flimsy Broken Sword", 5, 0);
-    Items goldenSword = new Items("GoldenSword", "Strong Golden Sword", 20, 0);
-    Items healingPotion = new Items("HealingPotion", "Healing Potion that will restore 20 health", 0, 20);
+    Items brokenSword = new Items("Broken Sword", "Flimsy Broken Sword", 5, 0);
+    Items goldenSword = new Items("Golden Sword", "Strong Golden Sword", 20, 0);
+    Items healingPotion = new Items("Healing Potion", "Healing Potion that will restore 20 health", 0, 60);
     Items key = new Items("Key", "Key", 0, 0);
     Items goldenKey = new Items("GoldenKey", "Key to unlock dungeon exit", 0, 0);
 
