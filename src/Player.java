@@ -9,11 +9,13 @@ public class Player {
     private String playerName;
     public Inventory inventory;
     private int attack;
-    public int position;
+    private int row;
+    private int column;
 
     public Player(String playerName) {
         health = 100; // This can change, just picking a random number for now
-        position = 14; // Locations are numbered 1-16 starting from top left
+        row = 3;
+        column = 0;
         this.playerName = playerName; //Added this to accept player input as name through main
         inventory = new Inventory();
         attack = 1;
@@ -27,8 +29,11 @@ public class Player {
         return health;
     }
 
-    public int getPosition() {
-        return position;
+    public int getRow() {
+        return row;
+    }
+    public int getColumn() {
+        return column;
     }
 
     public void setHealth(int health) {
@@ -63,18 +68,18 @@ public class Player {
     /*
      * For changing player position when moving
      */
-//    public void moveNorth() {
-//        row -= 4;
-//    }
-//    public void moveSouth() {
-//        row += 4;
-//    }
-//    public void moveEast() {
-//        column += 1;
-//    }
-//    public void moveWest() {
-//        column -= 1;
-//    }
+    public void moveNorth() {
+        row -= 1;
+    }
+    public void moveSouth() {
+        row += 1;
+    }
+    public void moveEast() {
+        column += 1;
+    }
+    public void moveWest() {
+        column -= 1;
+    }
 
 }
 

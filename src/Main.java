@@ -3,7 +3,11 @@ import java.util.Random;
 import java.util.ArrayList;
 
 
-public static void main(){
+public void main(){
+    GameData game = new GameData();
+    game.start();
+
+/*
     Scanner userInput = new Scanner(System.in);
     System.out.println("Please enter your player name: ");
     String playerName = userInput.nextLine();
@@ -39,4 +43,6 @@ public static void main(){
 
     //Example start combat
     Combat.combat(player, finalBOSS);
+
+ */
 }

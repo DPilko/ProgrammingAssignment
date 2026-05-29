@@ -5,8 +5,8 @@ public class Room {
     // Instance variables for items
     private String roomName; // room name
     private String roomDescription; // when the player first visits the room
-    private String updatedRoomDescription; // for when the player has visited the room
-    private List<Items> items; // an array of items in that room
+    private String updatedRoomDescription; // for when the player has visited the room/completed some requirements for description to change (defeated enemy/picked up item)
+    private Items items; // what item is in that room
     private Enemy enemy; // which enemy is in that room
     private NPC npc; // which npc is in that room
 
@@ -14,16 +14,10 @@ public class Room {
     // missing npc hasMeet from constructor, might cause future issues, we will see..
     public Room(String roomName, 
                 String roomDescription, 
-                String updatedRoomDescription,
-                List<Items> items,
-                Enemy enemy,
-                NPC npc) {
+                String updatedRoomDescription) {
         this.roomName = roomName;
         this.roomDescription = roomDescription;
         this.updatedRoomDescription = updatedRoomDescription;
-        this.items = new ArrayList<>(items); // not sure about this
-        this.enemy = enemy;
-        this.npc = npc;
     }
     
     public String getRoomName() {
@@ -38,16 +32,25 @@ public class Room {
         return updatedRoomDescription;
     }
 
-    public List<Items> getItems() { // not sure about this, will fix later lol..
+    // Not all rooms have items/enemy/npc, so created setter methods for them instead of being in constructor
+    public Items getItems() {
         return items;
     }
-
-   public Enemy hasEnemy() { // get the enemy name if there is an enemy in that room
-        return enemy; // not sure why its red
-   }
-    
-    public NPC getNPC() {
-        return npc;
+    public void setItems(Items items) {
+        this.items = items;
     }
 
+    public Enemy getEnemy() {
+        return enemy;
+    }
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    public NPC getNpc() {
+        return npc;
+    }
+    public void setNpc(NPC npc) {
+        this.npc = npc;
+    }
 }

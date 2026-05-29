@@ -8,33 +8,38 @@ public class Combat {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
+        int enemyAttack;
+        int playerAttack;
+
         System.out.println("You have entered combat with " + enemy.getName() + "!");
         while (player.getHealth() > 0 && !enemy.isDefeated()) {
             System.out.println("You have " + player.getHealth() + " health remaining!\n");
             System.out.println("What do you want to do?");
             System.out.println("Do you want to (F)ight or (R)un");
-            String combatDecision = scanner.nextLine();
+            String combatDecision = scanner.nextLine().toLowerCase();
             boolean playerRun = false;
 
-            if (combatDecision.equals("F")) {
+            if (combatDecision.equals("f")) {
                 System.out.println("What item number would you like to equip?");
                 player.inventory.showInventory();
                 int itemNumber = scanner.nextInt();
                 scanner.nextLine(); //Was creating extra inputs, this fixs
                 player.inventory.useItem(itemNumber, player);
 
-                enemy.takeDamage(player.attackDamage());
+                playerAttack = player.attackDamage();
+                enemy.takeDamage(playerAttack);
 
-                System.out.printf("You have attacked %s and dealt %d damage.\n%s has %d health remaining\n\n",enemy.getName(),player.attackDamage(),enemy.getName(),enemy.getHealth());
+                System.out.printf("You have attacked %s and dealt %d damage.\n%s has %d health remaining\n\n",enemy.getName(),playerAttack,enemy.getName(),enemy.getHealth());
 
-                player.takeDamage(enemy.getDamage());
+                enemyAttack = enemy.attack();
+                player.takeDamage(enemyAttack);
 
-                System.out.printf("%s has attacked you and dealt %d to you.\n",enemy.getName(),enemy.getDamage());
+                System.out.printf("%s has attacked you and dealt %d to you.\n",enemy.getName(),enemyAttack);
 
 
             }
 
-            else if (combatDecision.equals("R")) {
+            else if (combatDecision.equals("r")) {
                 playerRun = random.nextBoolean();
                 if(playerRun){
                     System.out.println("You have fled combat");

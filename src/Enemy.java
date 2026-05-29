@@ -33,7 +33,7 @@ public class Enemy {
 
     public int attack() {
         Random random = new Random();
-        return random.nextInt(damage); // Damage calc can change later idk
+        return random.nextInt(damage/2, damage); // Damage calc can change later idk
     }
 
     public int getDamage() {
