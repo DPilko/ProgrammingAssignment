@@ -18,7 +18,7 @@ public class Inventory {
     //Player can check on inventory
     public void showInventory() {
        //Will break out if nothing is in inventory
-        if (items == null) {
+        if (items.isEmpty()) { // better way of checking if inventory is empty instead of 
             System.out.println("Inventory is empty");
             return;
         }
