@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 // initalising game data
@@ -8,6 +9,7 @@ public class GameData {
     private Boolean gameRunning;
 
     public void start() {
+        clearScreen();
         map = new Room[4][4];
         gameRunning = true;
         createMap();
@@ -21,45 +23,58 @@ public class GameData {
         printInstructions();
 
         while (gameRunning && player.getHealth() > 0) { // main running loop
-
             Room currentRoom = getCurrentRoom();
             System.out.println(currentRoom.getRoomDescription());
 
-            System.out.println("Hello ");
-            System.out.println("\nWhat would you like to do?");
+            System.out.println("\nWhat would you like to do? (use 'help' for help)");
             String input = userInput.nextLine().toLowerCase();
 
-            switch (input) {
-                case "n":
-                case "s":
-                case "e":
-                case "w":
-                    movePlayer(input);
-                    break;
+            clearScreen();
+            handleInput(input);
+            
+        }
+        userInput.close();
+    }
 
-                case "inv":
-                    player.getInventory().showInventory();
-                    break;
+    private void handleInput(String input) {
+        switch (input) {
+            case "n":
+            case "s":
+            case "e":
+            case "w":
+                movePlayer(input);
+                break;
 
-                case "pickup":
-                    pickupItem();
-                    break;
+            case "inv":
+                player.getInventory().showInventory();
+                break;
 
-                case "talk":
-                    talkToNpc();
-                    break;
+            case "pickup":
+                pickupItem();
+                break;
 
-                case "fight":
-                    fightEnemy();
-                    break;
+            case "talk":
+                talkToNpc();
+                break;
 
-                case "quit":
-                    gameRunning = false;
-                    break;
+            case "fight":
+                fightEnemy();
+                break;
 
-                default:
-                    System.out.println("Invalid input");
-            }
+            case "help":
+                printInstructions();
+                break;
+
+            case "quit":
+                gameRunning = false;
+                break;
+
+            case "\u0003": // Ctrl+C character
+                gameRunning = false;
+                break;  
+
+            default:
+                System.out.println("Invalid input");
         }
     }
 
@@ -186,21 +201,34 @@ public class GameData {
     private void fightEnemy() {
         Room room = getCurrentRoom();
 
-        if(room.getEnemy() != null) {
+        if (room.getEnemy() != null) {
             Combat.combat(player, room.getEnemy());
-        }
-        else {
+        } else {
             System.out.println("There is no enemy to fight.");
         }
     }
 
+    private void clearScreen(){
+        try {
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win")) { // gets operating system name
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); 
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            } // creates a process, connects to your terminal, starts the process, waits for the command to complete
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Could not clear screen, please run in windows terminal or bash terminal");
+        }
+    }
+
     private void printInstructions() {
-        System.out.println("Commands:");
+        System.out.println("\nCommands:");
         System.out.println("n/s/e/w - move");
         System.out.println("inv - show inventory");
         System.out.println("pickup - collect item");
         System.out.println("talk - talk to NPC");
         System.out.println("fight - start combat");
+        System.out.println("help - print this menu");
         System.out.println("quit - exit game");
     }
 }
