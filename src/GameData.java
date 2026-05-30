@@ -15,16 +15,17 @@ public class GameData {
         System.out.println("Welcome to the game"); // Add more game intro stuff here
 
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Please enter your player name: ");
+        System.out.printf("Please enter your player name: ");
         String playerName = userInput.nextLine();
         player = new Player(playerName);
         printInstructions();
 
-        while (gameRunning && player.getHealth() > 0) {
+        while (gameRunning && player.getHealth() > 0) { // main running loop
 
             Room currentRoom = getCurrentRoom();
             System.out.println(currentRoom.getRoomDescription());
 
+            System.out.println("Hello ");
             System.out.println("\nWhat would you like to do?");
             String input = userInput.nextLine().toLowerCase();
 
@@ -37,7 +38,7 @@ public class GameData {
                     break;
 
                 case "inv":
-                    player.inventory.showInventory();
+                    player.getInventory().showInventory();
                     break;
 
                 case "pickup":
