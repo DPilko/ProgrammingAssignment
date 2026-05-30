@@ -36,8 +36,8 @@ public class GameData {
                     movePlayer(input);
                     break;
 
-                case "inventory":
-                    player.getInventory();
+                case "inv":
+                    player.inventory.showInventory();
                     break;
 
                 case "pickup":
