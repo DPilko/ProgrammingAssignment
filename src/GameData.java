@@ -121,7 +121,7 @@ public class GameData {
         map[1][0].setItems(new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60));
         map[1][2].setItems(new Items("Golden Key", "Key to unlock dungeon exit", 0, 0));
 
-        map[3][1].setNpc(new NPC("", "", "", false));
+        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, looks like you could use some help on your journey.", "", false));
 
         map[3][2].setEnemy(new Enemy("FirstEnemy", 30, 20));
         map[1][2].setEnemy(new Enemy("SecondsEnemy", 50, 35));
@@ -192,6 +192,7 @@ public class GameData {
 
         if (room.getNpc() != null) {
             // talk to npc
+            System.out.println(room.getNpc().getGreeting());
         }
         else {
             System.out.println("There is nobody here.");
