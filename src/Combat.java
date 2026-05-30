@@ -11,6 +11,7 @@ public class Combat {
         int enemyAttack;
         int playerAttack;
 
+
         System.out.println("You have entered combat with " + enemy.getName() + "!");
         while (player.getHealth() > 0 && !enemy.isDefeated()) {
             System.out.println("You have " + player.getHealth() + " health remaining!\n");
@@ -20,7 +21,7 @@ public class Combat {
             boolean playerRun = false;
 
             if (combatDecision.equals("f")) {
-                System.out.println("What item number would you like to equip?");
+                System.out.println("What item number would you like to use/equip?");
                 player.inventory.showInventory();
                 int itemNumber = scanner.nextInt();
                 scanner.nextLine(); //Was creating extra inputs, this fixs
@@ -29,13 +30,19 @@ public class Combat {
                 playerAttack = player.attackDamage();
                 enemy.takeDamage(playerAttack);
 
+                if(enemy.getHealth() <= 0) {
+                    enemy.setDefeated(true);
+                    System.out.println("You have slain the " + enemy.getName());
+                    playerRun = true;
+                }
+
                 System.out.printf("You have attacked %s and dealt %d damage.\n%s has %d health remaining\n\n",
                         enemy.getName(), playerAttack, enemy.getName(), enemy.getHealth());
 
                 enemyAttack = enemy.attack();
                 player.takeDamage(enemyAttack);
 
-                System.out.printf("%s has attacked you and dealt %d to you.\n", enemy.getName(), enemyAttack);
+                System.out.printf("%s has attacked and dealt %d to you.\n", enemy.getName(), enemyAttack);
 
             }
 
@@ -58,6 +65,7 @@ public class Combat {
         if (player.getHealth() <= 0) {
             System.out.println("You have died in combat to " + enemy.getName() + "!");
         }
+
         scanner.close();
     }
 }

@@ -119,15 +119,12 @@ public class GameData {
         //Have added this to the npc instead, so that the npc can give it to the player after speaking.
         //map[3][1].setItems(new Items("Broken Sword", "Flimsy Broken Sword", 5, 0));
 
-        map[3][2].setItems(new Items("Hallway Key", "", 0, 0));
-        map[1][0].setItems(new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60));
-        map[1][2].setItems(new Items("Golden Key", "Key to unlock dungeon exit", 0, 0));
-
         map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, looks like you could use some help on your journey.Take this...", "Go use that sword for good!", false,new Items("Broken Sword", "Flimsy Broken Sword", 5, 0)));
+        map[1][0].setNpc(new NPC("Potion Master", "Hello there, you seem to have been injured on your adventure. This might be helpful", "Make sure to use that potion in bottle",false,new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60)));
 
-        map[3][2].setEnemy(new Enemy("FirstEnemy", 30, 20));
-        map[1][2].setEnemy(new Enemy("SecondsEnemy", 50, 35));
-        map[0][2].setEnemy(new Enemy("FinalBoss", 200, 40));
+        map[3][2].setEnemy(new Enemy("FirstEnemy", 30, 20, new Items("Hallway Key", "Key to unlock dungeon exit", 0, 0)));
+        map[1][2].setEnemy(new Enemy("SecondsEnemy", 50, 35, new Items("Golden Sword", "Strong Golden Sword", 20, 0)));
+        map[0][2].setEnemy(new Enemy("FinalBoss", 200, 40, new Items("Golden Key", "Key to unlock dungeon exit", 0, 0)));
 
     }
 
