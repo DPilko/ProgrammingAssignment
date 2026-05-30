@@ -140,7 +140,7 @@ public class GameData {
 
         switch (direction) {
                 case "n":
-                    if (map[row - 1][column] != null) {
+                    if (row > 0 && map[row - 1][column] != null) {
                         player.moveNorth();
                     } else {
                         System.out.println("You cannot go north.");
@@ -148,7 +148,7 @@ public class GameData {
                     break;
 
                 case "s":
-                    if (map[row + 1][column] != null) {
+                    if (row < map.length -1 && map[row + 1][column] != null) {
                         player.moveSouth();
                     } else {
                         System.out.println("You cannot go south.");
@@ -156,7 +156,7 @@ public class GameData {
                     break;
 
                 case "e":
-                    if (map[row][column + 1] != null) {
+                    if (column < map[0].length - 1 && map[row][column + 1] != null) {
                         player.moveEast();
                     } else {
                         System.out.println("You cannot go east.");
@@ -164,7 +164,7 @@ public class GameData {
                     break;
 
                 case "w":
-                    if (map[row][column - 1] != null) {
+                    if (column > 0 && map[row][column - 1] != null) {
                         player.moveWest();
                     } else {
                         System.out.println("You cannot go west.");
