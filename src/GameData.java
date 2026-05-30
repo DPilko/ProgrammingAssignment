@@ -116,12 +116,14 @@ public class GameData {
                 "",
                 "");
 
-        map[3][1].setItems(new Items("Broken Sword", "Flimsy Broken Sword", 5, 0));
+        //Have added this to the npc instead, so that the npc can give it to the player after speaking.
+        //map[3][1].setItems(new Items("Broken Sword", "Flimsy Broken Sword", 5, 0));
+
         map[3][2].setItems(new Items("Hallway Key", "", 0, 0));
         map[1][0].setItems(new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60));
         map[1][2].setItems(new Items("Golden Key", "Key to unlock dungeon exit", 0, 0));
 
-        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, looks like you could use some help on your journey.", "", false));
+        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, looks like you could use some help on your journey.Take this...", "Go use that sword for good!", false,new Items("Broken Sword", "Flimsy Broken Sword", 5, 0)));
 
         map[3][2].setEnemy(new Enemy("FirstEnemy", 30, 20));
         map[1][2].setEnemy(new Enemy("SecondsEnemy", 50, 35));
@@ -187,16 +189,25 @@ public class GameData {
     }
 
     private void talkToNpc() {
-
         Room room = getCurrentRoom();
 
-        if (room.getNpc() != null) {
-            // talk to npc
-            System.out.println(room.getNpc().getGreeting());
-        }
-        else {
+        if (room.getNpc() == null) {
             System.out.println("There is nobody here.");
+            return;
         }
+
+        //Prints first dialogue until spoken to.
+        NPC npc = room.getNpc();
+        System.out.println(npc.getDialogue());
+
+        //Check is the npc hasn't givenreward and if they have an item. If so this runs
+        if(!npc.isRewardGiven() && npc.getReward() != null) {
+            room.setItems(npc.getReward());
+            npc.setRewardGiven(true);
+
+            System.out.println("A " + npc.getReward().getItemName() + " has been placed onto the floor in front of you");
+        }
+
     }
 
     private void fightEnemy() {
