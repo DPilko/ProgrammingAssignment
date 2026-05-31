@@ -212,6 +212,13 @@ public class GameData {
 
         if (room.getEnemy() != null && !room.getEnemy().isDefeated()) {
             Combat.combat(player, room.getEnemy());
+
+            if(room.getEnemy().isDefeated()) {
+                room.setItems(room.getEnemy().getRewardItem());
+
+                System.out.println(room.getEnemy().getRewardItem().getItemName() + " has dropped onto the floor in front of you");
+            }
+
         } else {
             System.out.println("There is no enemy to fight.");
         }

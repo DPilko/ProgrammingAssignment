@@ -28,7 +28,6 @@ public class Enemy {
     public void setDefeated(boolean defeated) {
         isDefeated = defeated;
     }
-
     public void takeDamage(int damage) {
         health -= damage;
         if (health <= 0) {
@@ -45,4 +44,7 @@ public class Enemy {
         return damage;
     }
 
+    public Items getRewardItem() {
+        return rewardItem;
+    }
 }

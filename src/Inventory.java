@@ -60,4 +60,9 @@ public class Inventory {
         }
 
     }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
 }
