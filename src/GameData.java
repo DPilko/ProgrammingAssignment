@@ -93,8 +93,9 @@ public class GameData {
                 "An empty room with the corpse of a goblin.");
 
         map[2][1] = new Room("Locked Hallway.",
-                "A locked door blocks your path. Perhaps you could find a key somewhere else.",
+                "A locked door blocks your path.",
                 "The door is now open. You are free to pass through.");
+        map[2][1].setNeedsKey("Hallway Key");
 
         map[1][1] = new Room("Hallway",
                 "An empty corridor with a path to the left and right.",
@@ -132,6 +133,10 @@ public class GameData {
         return map[player.getRow()][player.getColumn()];
     }
 
+    private boolean isRoomLocked(Room currentRoom, Player player, String requiredKey) {
+        return (!player.getInventory().hasItem(requiredKey) && !(currentRoom.getKeyNeeded() == null));
+    } // if the player doesnt have required key and the room needs a key return true
+
     private void movePlayer(String direction) {
 
         int row = player.getRow();
@@ -141,6 +146,13 @@ public class GameData {
                 case "n":
                     if (row > 0 && map[row - 1][column] != null) {
                         player.moveNorth();
+                        if (isRoomLocked(getCurrentRoom(), player, getCurrentRoom().getKeyNeeded())) {
+                            System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
+                            System.out.println("Returning to revious room.");
+                            player.moveSouth();
+                            break;
+                        }
+                        
                     } else {
                         System.out.println("You cannot go north.");
                     }
@@ -149,6 +161,13 @@ public class GameData {
                 case "s":
                     if (row < map.length -1 && map[row + 1][column] != null) {
                         player.moveSouth();
+                        if (isRoomLocked(getCurrentRoom(), player, getCurrentRoom().getKeyNeeded())) {
+                            System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
+                            System.out.println("Returning to revious room.");
+                            player.moveNorth();
+                            break;
+                        }
+                        
                     } else {
                         System.out.println("You cannot go south.");
                     }
@@ -157,6 +176,13 @@ public class GameData {
                 case "e":
                     if (column < map[0].length - 1 && map[row][column + 1] != null) {
                         player.moveEast();
+                        if (isRoomLocked(getCurrentRoom(), player, getCurrentRoom().getKeyNeeded())) {
+                            System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
+                            System.out.println("Returning to revious room.");
+                            player.moveWest();
+                            break;
+                        }
+                        
                     } else {
                         System.out.println("You cannot go east.");
                     }
@@ -165,6 +191,13 @@ public class GameData {
                 case "w":
                     if (column > 0 && map[row][column - 1] != null) {
                         player.moveWest();
+                        if (isRoomLocked(getCurrentRoom(), player, getCurrentRoom().getKeyNeeded())) {
+                            System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
+                            System.out.println("Returning to revious room.");
+                            player.moveEast();
+                            break;
+                        }
+                        
                     } else {
                         System.out.println("You cannot go west.");
                     }
