@@ -306,4 +306,20 @@ public class GameData {
         System.out.println("help - print this menu");
         System.out.println("quit - exit game");
     }
+
+    /** Will check if player is in the room Treasure Room
+     * If so, the game will print this sequence and then end
+     */
+    private void checkWinCondition() {
+        Room room = getCurrentRoom();
+
+        if(room.getRoomName().equals("Treasure Room")) {
+            System.out.println(room.getRoomDescription());
+            System.out.println();
+            System.out.println("You have defeated the Dead King and claimed the treasure.");
+            System.out.println("====YOU WIN=====");
+
+            gameRunning = false;
+        }
+    }
 }
