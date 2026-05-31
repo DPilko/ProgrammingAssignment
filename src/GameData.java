@@ -233,7 +233,10 @@ public class GameData {
                 new ProcessBuilder("clear").inheritIO().start().waitFor();
             } // creates a process, connects to your terminal, starts the process, waits for the command to complete
         } catch (IOException | InterruptedException e) {
-            System.out.println("Could not clear screen, please run in windows terminal or bash terminal");
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
+            System.out.println("Please run in windows terminal or bash terminal");
         }
     }
 
