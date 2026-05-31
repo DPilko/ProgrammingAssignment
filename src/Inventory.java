@@ -25,7 +25,7 @@ public class Inventory {
         //Else will print each invenotry item 1 by 1
         System.out.println("Inventory:");
         for (int i = 0; i < items.size(); i++) {
-            System.out.println(i + ": " + items.get(i));
+            System.out.println((i+1) + ": " + items.get(i));
         }
 
     }
