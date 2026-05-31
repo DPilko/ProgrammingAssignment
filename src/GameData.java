@@ -152,7 +152,6 @@ public class GameData {
                         if (isRoomLocked(nextRoom)) {
                             System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
                             System.out.println("Returning to revious room.");
-                            player.moveSouth();
                             break;
                         }
                         player.moveNorth();
