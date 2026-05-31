@@ -115,11 +115,12 @@ public class GameData {
         map[0][2] = new Room("King's Throne",
                 "The Dead King stands before you.\n A locked treasure room awaits.\n The candle lights glimmer off the\n Golden key around the dead king's neck\n",
                 "The dead king takes its last \n breath on the throne. \n You have completed the game. \n ");
-        map[0][2].setNeedsKey("Golden Key");
+
 
         map[0][3] = new Room("Treasure Room",
                 " The treasure room is locked, \nperhaphs the dead king has the key!",
                 " You have slain the dead king and \n claimed the dungeon's treasures for your own!\n");
+        map[0][3].setNeedsKey("Golden Key");
 
         //Have added this to the npc instead, so that the npc can give it to the player after speaking.
         //map[3][1].setItems(new Items("Broken Sword", "Flimsy Broken Sword", 5, 0));
