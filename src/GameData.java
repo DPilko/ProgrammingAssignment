@@ -1,12 +1,15 @@
 import java.util.Scanner;
 
-// initalising game data
-// instead of initalising all game data in the main method
+/**
+ * Main game functionality and loop contained here
+ * This will be run by the Main class
+ */
 public class GameData {
     private Room[][] map;
     private Player player;
     private Boolean gameRunning;
 
+    // The main loop while navigating the game map
     public void start() {
         clearScreen();
         map = new Room[4][4];
@@ -21,7 +24,7 @@ public class GameData {
         player = new Player(playerName);
         printInstructions();
 
-        while (gameRunning && player.getHealth() > 0) { // main running loop
+        while (gameRunning && player.getHealth() > 0) { // main game loop
             Room currentRoom = getCurrentRoom();
             System.out.println(currentRoom.getRoomDescription());
 
@@ -73,6 +76,11 @@ public class GameData {
         }
     }
 
+    /*
+     * This method generates the rooms for the game.
+     * Each room is given a name, description, and updated description for use upon completion
+     * NPCs and Enemys are also set for each room that contains them
+     */
     private void createMap() {
 
         map[3][0] = new Room("Castle Entrance",
@@ -125,10 +133,19 @@ public class GameData {
 
     }
 
+    /**
+     * Checks which room the Player is currently in using an array
+     * @return Current Player position
+     */
     private Room getCurrentRoom() {
         return map[player.getRow()][player.getColumn()];
     }
 
+    /**
+     * Checking if a given room is locked and requires a key
+     * @param room The room being checked
+     * @return Whether the player has the required item
+     */
     private boolean isRoomLocked(Room room) {
         String keyNeeded = room.getKeyNeeded();
         if (keyNeeded != null && !player.getInventory().hasItem(keyNeeded)) {
@@ -140,6 +157,10 @@ public class GameData {
         
     } // if the player doesnt have required key and the room needs a key return true
 
+    /**
+     * Method used for move the player to a new room if input is N/E/S/W
+     * @param direction Which direction the Player is trying to move (N/E/S/W)
+     */
     private void movePlayer(String direction) {
 
         int row = player.getRow();
@@ -147,13 +168,20 @@ public class GameData {
 
         switch (direction) {
                 case "n":
+
+                    // Making sure there is a room where the player if trying to move to,
+                    // and that they are still within the confines of the map array
                     if (row > 0 && map[row - 1][column] != null) {
                         Room nextRoom = map[row - 1][column];
                         // System.out.println("Key needed: '" + nextRoom.getKeyNeeded() + "'"); debug
                         // System.out.println("Has key: " + player.getInventory().hasItem(nextRoom.getKeyNeeded())); debug
+
                         if (isRoomLocked(nextRoom)) {
-                            System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
-                            System.out.println("Returning to revious room.");
+                            if (getCurrentRoom() == map[1][2])
+                                System.out.println("The troll is blocking your path, you must fight to proceed.");
+                            else
+                                System.out.println("This room is locked, Perhaps you could find a key somewhere else.");
+                            System.out.println("Returning to previous room.");
                             break;
                         }
                         player.moveNorth();
@@ -174,6 +202,15 @@ public class GameData {
 
                 case "e":
                     if (column < map[0].length - 1 && map[row][column + 1] != null) {
+                        Room nextRoom = map[row][column + 1];
+                        // System.out.println("Key needed: '" + nextRoom.getKeyNeeded() + "'"); debug
+                        // System.out.println("Has key: " + player.getInventory().hasItem(nextRoom.getKeyNeeded())); debug
+
+                        if (isRoomLocked(nextRoom)) {
+                            System.out.println("This room is locked. You must fight the king to proceed.");
+                            System.out.println("Returning to previous room.");
+                            break;
+                        }
                         player.moveEast();
 
                         
@@ -231,6 +268,7 @@ public class GameData {
 
     }
 
+    // Checks if there is an enemy to fight in the current room, then initiates combat
     private void fightEnemy() {
         Room room = getCurrentRoom();
 
@@ -257,6 +295,7 @@ public class GameData {
         }
     }
 
+    // Commands displayed at the start of the game and when the player inputs "help"
     private void printInstructions() {
         System.out.println("\nCommands:");
         System.out.println("n/s/e/w - move");
