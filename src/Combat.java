@@ -78,6 +78,5 @@ public class Combat {
         if (player.getHealth() <= 0) {
             System.out.println("You have died in combat to " + enemy.getName() + "!");
         }
-        scanner.close();
     }
 }

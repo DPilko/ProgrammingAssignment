@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 // initalising game data
@@ -14,7 +13,7 @@ public class GameData {
         gameRunning = true;
         createMap();
 
-        System.out.printf("Welcome to the game \n You enter a dungeon. The there \n lies a treasure room, guarded by \n an Undead king. He has claimed these \n halls for centuries. Arm yourself, \n find mystical potions, and destroy him to \n claim the treasure for yourself! \n\n\n"); // Add more game intro stuff here
+        System.out.printf("Welcome to the game \n You enter a dungeon. There \n lies a treasure room, guarded by \n an Undead king. He has claimed these \n halls for centuries. Arm yourself, \n find mystical potions, and destroy him to \n claim the treasure for yourself! \n\n\n"); // Add more game intro stuff here
 
         Scanner userInput = new Scanner(System.in);
         System.out.printf("Please enter your player name: ");
@@ -33,7 +32,6 @@ public class GameData {
             handleInput(input);
             
         }
-        userInput.close();
     }
 
     private void handleInput(String input) {
@@ -69,9 +67,6 @@ public class GameData {
                 gameRunning = false;
                 break;
 
-            case "\u0003": // Ctrl+C character
-                gameRunning = false;
-                break;  
 
             default:
                 System.out.println("Invalid input");
@@ -112,6 +107,7 @@ public class GameData {
         map[0][2] = new Room("King's Throne",
                 "The Dead King stands before you. This is it.",
                 "The corpse of your enemy is sat lifeless on the throne. You did it.");
+        map[0][2].setNeedsKey("Golden Key");
 
         map[0][3] = new Room("Treasure Room",
                 "",
@@ -120,7 +116,7 @@ public class GameData {
         //Have added this to the npc instead, so that the npc can give it to the player after speaking.
         //map[3][1].setItems(new Items("Broken Sword", "Flimsy Broken Sword", 5, 0));
 
-        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, you look brave enough. You must entail on a mission to slay the dead king .Looks like you could use some help on your journey. Take this sword, you will need it!", "Go use that sword on that goblin! take his key and unlock this door.", false,new Items("Broken Sword", "Flimsy Broken Sword", 5, 0)));
+        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, you look brave enough. \n You must entail on a mission to slay \n the dead king .Looks like you could \n use some help on your journey.\n Take this sword, you will need it! \n", "Go use that sword on that goblin! take his key and unlock this door. \n", false,new Items("Broken Sword", "Flimsy Broken Sword", 5, 0)));
         map[1][0].setNpc(new NPC("Potion Master", "Hello there, you seem to have been injured on your adventure. This might be helpful", "Make sure to use that potion in bottle",false,new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60)));
 
         map[3][2].setEnemy(new Enemy("FirstEnemy", 30, 20, new Items("Hallway Key", "Key to unlock dungeon exit", 0, 0)));
@@ -249,19 +245,9 @@ public class GameData {
         }
     }
 
-    private void clearScreen(){
-        try {
-            String os = System.getProperty("os.name").toLowerCase();
-            if (os.contains("win")) { // gets operating system name
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); 
-            } else {
-                new ProcessBuilder("clear").inheritIO().start().waitFor();
-            } // creates a process, connects to your terminal, starts the process, waits for the command to complete
-        } catch (IOException | InterruptedException e) {
-            for (int i = 0; i < 50; i++) {
-                System.out.println();
-            }
-            System.out.println("Please run in windows terminal or bash terminal");
+    private void clearScreen() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
         }
     }
 
