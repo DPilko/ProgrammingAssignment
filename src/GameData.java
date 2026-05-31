@@ -230,8 +230,11 @@ public class GameData {
         NPC npc = room.getNpc();
         System.out.println(npc.getDialogue());
 
-        //Check is the npc hasn't givenreward and if they have an item. If so this runs
+        //Check if the npc hasn't given reward and if they have an item. If so this runs
         if(!npc.isRewardGiven() && npc.getReward() != null) {
+
+            room.setCompleted(true);
+
             room.setItems(npc.getReward());
             npc.setRewardGiven(true);
 
@@ -247,6 +250,9 @@ public class GameData {
             Combat.combat(player, room.getEnemy());
 
             if(room.getEnemy().isDefeated()) {
+
+                room.setCompleted(true);
+
                 room.setItems(room.getEnemy().getRewardItem());
 
                 System.out.println(room.getEnemy().getRewardItem().getItemName() + " has dropped onto the floor in front of you");
