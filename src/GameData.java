@@ -228,6 +228,8 @@ public class GameData {
                     }
                     break;
         }
+        //after movement check if player is in final spot
+        checkWinCondition();
     }
 
     private void pickupItem() {
