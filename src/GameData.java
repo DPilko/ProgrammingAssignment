@@ -131,7 +131,13 @@ public class GameData {
 
     private boolean isRoomLocked(Room room) {
         String keyNeeded = room.getKeyNeeded();
-        return keyNeeded != null && !player.getInventory().hasItem(keyNeeded);
+        if (keyNeeded != null && !player.getInventory().hasItem(keyNeeded)) {
+            room.setCompleted(true);
+            return true;
+        } else {
+            return false;
+        }
+        
     } // if the player doesnt have required key and the room needs a key return true
 
     private void movePlayer(String direction) {
