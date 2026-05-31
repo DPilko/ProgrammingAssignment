@@ -31,7 +31,12 @@ public class Inventory {
     }
     
     public boolean hasItem(String checkItem) {
-        return items.contains(checkItem);
+        for (Items item : items) {
+            if (item.getItemName().equals(checkItem)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //Check index number user entered and makes sure it is an index that exists.
