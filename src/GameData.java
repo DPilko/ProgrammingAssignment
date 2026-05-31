@@ -77,10 +77,10 @@ public class GameData {
 
         map[3][0] = new Room("Castle Entrance",
                 "The grand gates leading into the castle.",
-                "The gates have now shut, there is no turning back.");
+                "The gates have now shut,\n there is no turning back.");
 
         map[3][1] = new Room("Lobby",
-                "An open lobby with a branching path. There is an old man beckoning you over.",
+                "An open lobby with a branching path.\n There is an old man beckoning you over.",
                 "The old man is still there.");
 
         map[3][2] = new Room("FirstBossRoom",
@@ -89,7 +89,7 @@ public class GameData {
 
         map[2][1] = new Room("Locked Hallway.",
                 "A locked door blocks your path.",
-                "The door is now open. You are free to pass through.");
+                "The door is now open.\n You are free to pass through.");
         map[2][1].setNeedsKey("Hallway Key");
 
         map[1][1] = new Room("Hallway",
@@ -97,31 +97,31 @@ public class GameData {
                 "The hallway is still empty.");
 
         map[1][0] = new Room("Brewery",
-                "Broken vials and brewing equipment lie all over. There is one remaining health potion.",
+                "Broken vials and brewing equipment lie \n all over. A potion master lies in the \n roubles, on his last breath \n",
                 "Nothing remains but a mess the goblins left behind.");
 
         map[1][2] = new Room("SecondEnemyRoom",
-                "A large troll blocks your way. Your only option is to fight.",
-                "The trolls corpse lies in the corner.");
+                "A large Goblin blocks your way.\n Your only option is to fight.",
+                "The trolls corpse lies in the corner.\n");
 
         map[0][2] = new Room("King's Throne",
-                "The Dead King stands before you. This is it.",
-                "The corpse of your enemy is sat lifeless on the throne. You did it.");
+                "The Dead King stands before you.\n A locked treasure room awaits.\n The candle lights glimmer off the\n Golden key around the dead king's neck\n",
+                "The dead king takes its last \n breath on the throne. \n You have completed the game. \n ");
         map[0][2].setNeedsKey("Golden Key");
 
         map[0][3] = new Room("Treasure Room",
-                "",
-                "");
+                " The treasure room is locked, \nperhaphs the dead king has the key!",
+                " You have slain the dead king and \n claimed the dungeon's treasures for your own!\n");
 
         //Have added this to the npc instead, so that the npc can give it to the player after speaking.
         //map[3][1].setItems(new Items("Broken Sword", "Flimsy Broken Sword", 5, 0));
 
-        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, you look brave enough. \n You must entail on a mission to slay \n the dead king .Looks like you could \n use some help on your journey.\n Take this sword, you will need it! \n", "Go use that sword on that goblin! take his key and unlock this door. \n", false,new Items("Broken Sword", "Flimsy Broken Sword", 5, 0)));
-        map[1][0].setNpc(new NPC("Potion Master", "Hello there, you seem to have been injured on your adventure. This might be helpful", "Make sure to use that potion in bottle",false,new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60)));
+        map[3][1].setNpc(new NPC("Wise Old Man", "Hello traveller, you look brave enough. \n You must entail on a mission to slay \n the dead king .Looks like you could \n use some help on your journey.\n Take this sword, you will need it! \n", "Go use that sword on that goblin!\n take his key and unlock this door. \n", false,new Items("Broken Sword", "Flimsy Broken Sword", 5, 0)));
+        map[1][0].setNpc(new NPC("Potion Master", "You must slay the dead king and his goblin army!\n He has claimed these dungeons for himself!\n Here take this potion of healing,\n with this you can defeat \nthe dead king and his goblins.\n", "Make sure to use the healing \npotion in the battle! A rich reward awaits you!\n",false,new Items("Healing Potion", "Healing Potion that will restore 60 health", 0, 60)));
 
-        map[3][2].setEnemy(new Enemy("FirstEnemy", 30, 20, new Items("Hallway Key", "Key to unlock dungeon exit", 0, 0)));
-        map[1][2].setEnemy(new Enemy("SecondsEnemy", 50, 35, new Items("Golden Sword", "Strong Golden Sword", 20, 0)));
-        map[0][2].setEnemy(new Enemy("FinalBoss", 200, 40, new Items("Golden Key", "Key to unlock dungeon exit", 0, 0)));
+        map[3][2].setEnemy(new Enemy("Goblin", 20, 10, new Items("Hallway Key", "Key to unlock dungeon exit", 0, 0)));
+        map[1][2].setEnemy(new Enemy("Large Goblin", 30, 15, new Items("Golden Sword", "Strong Golden Sword", 20, 0)));
+        map[0][2].setEnemy(new Enemy("The Dead King", 40, 20, new Items("Golden Key", "Key to unlock dungeon exit", 0, 0)));
 
     }
 
@@ -251,8 +251,8 @@ public class GameData {
         }
     }
 
-    private void clearScreen() {
-        for (int i = 0; i < 50; i++) {
+    private void clearScreen() {        // moves old information off the scrren, 
+        for (int i = 0; i < 50; i++) {  // makes it easier to read the new information
             System.out.println();
         }
     }

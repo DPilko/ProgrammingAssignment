@@ -29,7 +29,7 @@ public class Combat {
                         enemy.getName(), playerAttack, enemy.getName(), enemy.getHealth());
 
                 //this checks after player combat if enemy health is 0 or less, and if so sets the enemy to defeated
-                if(enemy.getHealth() <= 0) {
+                if (enemy.getHealth() <= 0) {
                     enemy.setDefeated(true);
                     System.out.println("You have slain the " + enemy.getName());
                     break;
