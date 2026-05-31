@@ -210,7 +210,7 @@ public class GameData {
     private void fightEnemy() {
         Room room = getCurrentRoom();
 
-        if (room.getEnemy() != null) {
+        if (room.getEnemy() != null && !room.getEnemy().isDefeated()) {
             Combat.combat(player, room.getEnemy());
         } else {
             System.out.println("There is no enemy to fight.");
